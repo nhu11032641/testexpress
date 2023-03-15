@@ -27,7 +27,9 @@ const connectDB = async () => {
 // .catch(err => console.log(err))
 
 app.use('/',TodoItemRoute);
-
+app.get('/',(req,res)=>{
+    res.send('helloworld')
+})
 
 //app.listen(5500, ()=>{console.log('server is run ${PORT}')})
 
