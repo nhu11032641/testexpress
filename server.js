@@ -12,7 +12,7 @@ const TodoItemRoute = require('./routes/todoItems');
 
 const connectDB = async () => {
     try {
-      const conn = await mongoose.connect(process.env.DB_CONNECT);
+      const conn = await mongoose.connect('mongodb+srv://kevinham0218:kevinham0218@mernapp.udym9mx.mongodb.net/?retryWrites=true&w=majority');
       console.log('db connected');
       //console.log(`MongoDB Connected: ${conn.connection.host}`);
     } catch (error) {
