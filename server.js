@@ -10,11 +10,29 @@ const PORT = process.env.PORT || 5500;
 
 const TodoItemRoute = require('./routes/todoItems');
 
-mongoose.connect(process.env.DB_CONNECT)
-.then(()=>console.log('db connected'))
-.catch(err => console.log(err))
+const connectDB = async () => {
+    try {
+      const conn = await mongoose.connect(process.env.DB_CONNECT);
+      console.log('db connected');
+      //console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+      console.log(error);
+      process.exit(1);
+    }
+  }
+
+
+// mongoose.connect(process.env.DB_CONNECT)
+// .then(()=>console.log('db connected'))
+// .catch(err => console.log(err))
 
 app.use('/',TodoItemRoute);
 
 
-app.listen(5500, ()=>{console.log('server is run ${PORT}')})
+//app.listen(5500, ()=>{console.log('server is run ${PORT}')})
+
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+    })
+})
