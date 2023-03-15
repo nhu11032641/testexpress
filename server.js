@@ -27,7 +27,7 @@ const connectDB = async () => {
 // .catch(err => console.log(err))
 
 app.use('/',TodoItemRoute);
-app.get('/',(req,res)=>{
+app.get('/test',(req,res)=>{
     res.send('helloworld')
 })
 
